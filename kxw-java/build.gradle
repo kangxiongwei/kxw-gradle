@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'application' //可以将java依赖的jar包和项目一起打包成一个tar或zip文件
+}
+
+mainClassName = 'greeter.Greeter'
+
+dependencies {
+    compile project(':kxw-groovy')
+}
+
+distZip {
+    from project(':kxw-doc').asciidoctor, {
+        into "${project.name}-${version}"
+    }
+}
+distTar {
+    from project(':kxw-doc').asciidoctor, {
+        into "${project.name}-${version}"
+    }
+}
